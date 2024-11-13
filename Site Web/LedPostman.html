@@ -79,7 +79,7 @@
 
         // requête GET pour contrôler la LED
         function controlLED(address, state) {
-            const url = `http://172.16.15.46:1880/led${address}?state=${state}`;
+            const url = `https://1a3b7e76-5a20-41f1-be55-250a29af600f.mock.pstmn.io/led${address}?state=${state}`;
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
