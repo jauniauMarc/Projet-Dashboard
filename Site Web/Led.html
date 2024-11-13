@@ -7,27 +7,17 @@
     <link rel="stylesheet" href="Led.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Contrôle de la LED</h1>
+    <h1>Contrôle de la LED</h1>
 
-        <section>
-            <h2>Contrôler Arduino 8</h2>
-            <div>
-                <button id="onButton8">Allumer LED Arduino 8</button>
-                <button id="offButton8">Éteindre LED Arduino 8</button>
-                <span id="ledStatus8" class="led-indicator"></span> <!-- Indicateur lumineux Arduino 8 -->
-            </div>
-        </section>
+    <!-- Contrôle pour l'Arduino 8 -->
+    <h2>Contrôler Arduino 8</h2>
+    <button id="onButton8">Allumer LED Arduino 8</button>
+    <button id="offButton8">Éteindre LED Arduino 8</button>
 
-        <section>
-            <h2>Contrôler Arduino 9</h2>
-            <div>
-                <button id="onButton9">Allumer LED Arduino 9</button>
-                <button id="offButton9">Éteindre LED Arduino 9</button>
-                <span id="ledStatus9" class="led-indicator"></span> <!-- Indicateur lumineux Arduino 9 -->
-            </div>
-        </section>
-    </div>
+    <!-- Contrôle pour l'Arduino 9 -->
+    <h2>Contrôler Arduino 9</h2>
+    <button id="onButton9">Allumer LED Arduino 9</button>
+    <button id="offButton9">Éteindre LED Arduino 9</button>
 
     <script>
         // boutons 
@@ -36,15 +26,11 @@
         const onButton9 = document.getElementById("onButton9");
         const offButton9 = document.getElementById("offButton9");
 
-        // Indicateurs lumineux
-        const ledStatus8 = document.getElementById("ledStatus8");
-        const ledStatus9 = document.getElementById("ledStatus9");
-
         // Suivi des états des LED
         let led8State = "off"; // Initialement éteinte
         let led9State = "off"; // Initialement éteinte
 
-        // Mettre à jour les boutons et l'indicateur lumineux
+        // Mettre à jour le texte du bouton et le statut de la LED
         function updateButtonStatus() {
             // LED 8
             if (led8State === "on") {
@@ -52,13 +38,11 @@
                 offButton8.disabled = false;
                 onButton8.textContent = "LED Arduino 8 allumée";
                 offButton8.textContent = "Éteindre LED Arduino 8";
-                ledStatus8.style.backgroundColor = "#28a745"; // Vert pour allumée
             } else {
                 onButton8.disabled = false;
                 offButton8.disabled = true;
                 onButton8.textContent = "Allumer LED Arduino 8";
                 offButton8.textContent = "LED Arduino 8 éteinte";
-                ledStatus8.style.backgroundColor = "#ccc"; // Gris pour éteinte
             }
 
             // LED 9
@@ -67,13 +51,11 @@
                 offButton9.disabled = false;
                 onButton9.textContent = "LED Arduino 9 allumée";
                 offButton9.textContent = "Éteindre LED Arduino 9";
-                ledStatus9.style.backgroundColor = "#28a745"; // Vert pour allumée
             } else {
                 onButton9.disabled = false;
                 offButton9.disabled = true;
                 onButton9.textContent = "Allumer LED Arduino 9";
                 offButton9.textContent = "LED Arduino 9 éteinte";
-                ledStatus9.style.backgroundColor = "#ccc"; // Gris pour éteinte
             }
         }
 
@@ -89,7 +71,7 @@
                     } else if (address === 9) {
                         led9State = state;
                     }
-                    // Mettre à jour les boutons et l'indicateur lumineux
+                    // Mettre à jour les boutons
                     updateButtonStatus();
                 })
                 .catch(error => {
